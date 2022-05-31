@@ -1,33 +1,31 @@
-package experiment2;
+package adapter;
 
 interface Cat{
-    void cry();
+    void mewing();
     void catchMouse();
 }
 
 interface Dog{
-    void wang();
+    void barking();
     void action();
 }
 
 class ConcreteCat implements Cat{
     @Override
-    public void cry() {
-        System.out.println("猫叫");
+    public void mewing() {
+        System.out.println("喵喵");
     }
     @Override
     public void catchMouse() {
-        System.out.println( "猫抓老鼠");
+        System.out.println( "开抓老鼠");
     }
 }
 class ConcreteDog implements Dog{
     @Override
-    public void wang(){
+    public void barking(){
         System.out.println("狗叫");
     }
-    public void action(){
-
-    }
+    public void action(){ System.out.println( "没学会要干啥");}
 }
 
 class Adapter implements Dog,Cat{
@@ -46,23 +44,23 @@ class Adapter implements Dog,Cat{
         this.dog = dog;
     }
     @Override
-    public void cry() //猫学狗叫
+    public void mewing()
     {
-        System.out.print( "猫学");
-        dog.wang();
+        System.out.print( "这是猫--");
+        dog.barking();
     }
     @Override
     public void catchMouse() {
         cat.catchMouse();
     }
     @Override
-    public void wang() {
-        dog.wang();
+    public void barking() {
+        dog.barking();
     }
     @Override
-    public void action() //狗学猫抓老鼠
+    public void action()
     {
-        System.out.print( "狗学");
+        System.out.print( "这是狗--");
         cat.catchMouse();
     }
 }
@@ -77,7 +75,7 @@ public class Client {
         adapter.setDog(dog);
         cat = (Cat) adapter;
         cat.catchMouse();
-        cat.cry();
+        cat.mewing();
         dog = (Dog) adapter;
         dog.action();
     }
