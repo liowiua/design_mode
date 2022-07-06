@@ -65,7 +65,7 @@ class Magazine implements Item
     }
     public void accept(ItemHandler handler)
     {
-        handler.handle(this);        ;    //!!!!!!!!!!!!!!!!
+        handler.handle(this);    //!!!!!!!!!!!!!!!!
     }
 }
 
@@ -102,13 +102,14 @@ class Libaray
     {
         for(Object obj : items)
         {
-//            handler.handle((obj.getClass().getSimpleName())obj);              //!!!!!!!!!!!!!!!!
-            if(obj.getClass().getSimpleName().compareTo("Book") == 0)
-                handler.handle((Book) obj);//
-            else if(obj.getClass().getSimpleName().compareTo("Magazine") == 0)
-                handler.handle((Magazine) obj);//
-            else if((obj.getClass().getSimpleName().compareTo("Paper") == 0))
-                handler.handle((Paper) obj);//
+            ((Item)obj).accept(handler);
+             //!!!!!!!!!!!!!!!!
+//            if(obj.getClass().getSimpleName().compareTo("Book") == 0)
+//                handler.handle((Book) obj);//
+//            else if(obj.getClass().getSimpleName().compareTo("Magazine") == 0)
+//                handler.handle((Magazine) obj);//
+//            else if((obj.getClass().getSimpleName().compareTo("Paper") == 0))
+//                handler.handle((Paper) obj);//
 
         }
     }

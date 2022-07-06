@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+interface Color {
+    void draw();
+}
+
+class Red implements Color {
+
+    
+    + void draw();
+}
+
+class Blue implements Color {
+
+    
+    + void draw();
+}
+
+class Yellow implements Color {
+
+    
+    + void draw();
+}
+
+interface Creator {
+
+    + Color createColor();
+}
+
+
+class RedCreator implements Creator{
+
+    
+    + Red createColor();
+}
+class BlueCreator implements Creator{
+
+    
+    + Blue createColor();
+}
+class YellowCreator implements Creator{
+
+    
+    + Yellow createColor();
+}
+
+ class MethodClient {
+
+    + static void main(String[] args);
+    
+}
+
+MethodClient ..> Creator
+MethodClient ..> Color
+RedCreator ..> Red
+BlueCreator ..> Blue
+YellowCreator ..> Yellow
+
+@enduml

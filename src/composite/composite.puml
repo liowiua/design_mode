@@ -1,0 +1,50 @@
+@startuml
+
+
+abstract class Component {
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  abstract receiveDoc() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  abstract getName() : String
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  setName(String name) : void
+}
+
+class Leaf extends Component{
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌-  String name
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  receiveDoc() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  receiveDoc(String senior)
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  Leaf(String name) : void
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  getName() : String
+}
+
+class Composite extends Component{
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌-  ArrayList list
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌-  String name
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  Composite(String name)
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  getName() : String
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  receiveDoc() : void
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  getComposite() : List
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  getLeaf() : List
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  add(Component branch) : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  remove(Component branch) : void
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  sendDoc(Composite composite) : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  sendDoc(Leaf leaf) : void
+}
+
+class Client {
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+   main() : void
+}
+
+Client ..> Component
+Composite o..> Component
+@enduml

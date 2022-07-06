@@ -58,11 +58,7 @@ class Battalion extends Officer{
         return false;
     }
 }
-//          1）敌人数量<10,班长下达作战命令。
-//        （2）10<=敌人数量<50,排长下达作战命令。
-//        （3）50<=敌人数量<200，营长下达作战命令。
-//        （4）敌人数量>=200,需要开会讨论再下达作战命令。
-//
+
 public class Client {
     public static void main(String[] args) {
         Officer squad = new Squad();

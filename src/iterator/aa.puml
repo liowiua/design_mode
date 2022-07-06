@@ -1,0 +1,34 @@
+@startuml
+
+class IteratorClient {
+}
+
+interface Aggregate {
+    +  add(Object obj);
+    +  remove(Object obj);
+    + Iterator getIterator();
+}
+
+class ConcreteAggregate implements Aggregate {
+    - List<Object> list ;
+    +  add(Object obj);
+    +  remove(Object obj);
+    + Iterator getIterator() ;
+}
+interface Iterator {
+    Object first();
+    Object next();
+    boolean hasNext();
+}
+class ConcreteIterator implements Iterator {
+    - List<Object> list;
+    - int index;
+    + ConcreteIterator(List<Object> list);
+    + boolean hasNext();
+    + Object first();
+    + Object next();
+}
+IteratorClient ..> ConcreteAggregate
+ConcreteAggregate ..> ConcreteIterator
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Info{
+    ‌-‌‌‌‍‍  int number;
+    ‌‌‌‍‍‌‌‌‌‌‌‍‍+ Info(int number)
+
+    ‌‌‌‍‍‌‌‌‌‌‌‍‍+  getNumber() : int
+}
+
+abstract class Officer{
+    ‌#‌‌‌‍‍ Officer next;
+    ‌‌‌‍‍‌‌‌‌‌‌‍‍+  setNext(Officer officer) : void
+    ‌‌‌‍‍‌‌‌‌‌‌‍‍+ abstract handle(Info info) : boolean
+}
+
+class Squad extends Officer{
+    ‌‌‌‍‍‌‌‌‌‌‌‍‍+  handle(Info info) : boolean
+}
+
+class Platoon extends Officer{
+    ‌‌‌‍‍‌‌‌‌‌‌‍‍+  handle(Info info) : boolean
+}
+
+class Battalion extends Officer{
+    ‌‌‌‍‍‌‌‌‌‌‌‍‍+  handle(Info info) : boolean
+}
+
+ class Client {
+}
+
+Client ..> Officer
+Client ..> Info
+Officer ..> Info
+Officer --> Officer
+
+@enduml

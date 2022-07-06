@@ -1,0 +1,34 @@
+@startuml
+
+abstract class ImageReader{
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  abstract read() : void
+}
+
+class GifReader extends ImageReader {
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  read() : void
+}
+
+class JpgReader extends ImageReader {
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  read() : void
+}
+
+abstract class Factory{
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  abstract FactoryMethod() : ImageReader
+} 
+
+class GifReaderFactory extends Factory{
+	
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  FactoryMethod() : ImageReader
+}
+
+class JpgReaderFactory extends Factory{
+	
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+ FactoryMethod() : ImageReader
+}
+
+ class FactoryMethod{
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  main() : void
+}
+
+FactoryMethod ..> GifReaderFactory
+@enduml

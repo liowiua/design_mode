@@ -1,0 +1,58 @@
+@startuml
+
+abstract class Builder {
+    ‌# Computer computer
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+ abstract buildCpu() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  abstract buildMemory() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  abstract buildDisk() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  abstract buildHost() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  abstract buildMonitor() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  Computer getResult() : void
+}
+
+class Computer {
+    ‌- String cpu‌‌‌‌‍‍‌‌‌‌‌‌‍
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌- String memory‌‌‌‌‍‍‌‌‌‌‌‌‍
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌- String disk‌‌‌‌‍‍‌‌‌‌‌‌‍
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌- String host‌‌‌‌‍‍‌‌‌‌‌‌‍
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌- String monitor‌‌‌‌‍‍‌‌‌‌‌‌‍
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  getCpu() : String
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  setCpu(String cpu) : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  getMemory() : String
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  setMemory(String memory) : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  getDisk() : String
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  setDisk(String disk) : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  getHost() : String
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  setHost(String host) : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  getMonitor() : String
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  setMonitor(String monitor) : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  show() : void
+
+
+}
+
+class ComputerBuilder extends Builder {
+
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  buildCpu() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  buildMemory() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  buildDisk() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  buildHost() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  buildMonitor() : void
+}
+
+class Director {
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌- Builder builder‌‌‌‌‍‍‌‌‌‌‌‌‍
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  Director(Builder builder)
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  Computer construct()
+}
+
+ class BuilderPattern{
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  main() : void
+}
+
+BuilderPattern ..> Director
+BuilderPattern ..> Computer
+Director --> Builder
+Builder *..> Computer
+
+@enduml

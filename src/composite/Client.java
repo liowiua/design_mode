@@ -49,9 +49,6 @@ class Composite extends Component{
     public void receiveDoc() {
         System.out.println(name + " 收到文件");
     }
-//    public Component getChild(int n) {
-//        return list.get(n);
-//    }
 
     public List<Composite> getComposite(){
         ArrayList<Composite> temp = new ArrayList<>();

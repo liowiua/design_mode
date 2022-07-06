@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+interface Shape {
+    void draw();
+}
+
+class Rectangle implements Shape {
+
+    
+    + void draw();
+}
+
+class Square implements Shape {
+
+    
+    + void draw();
+}
+
+class Circle implements Shape {
+
+    
+    + void draw();
+}
+
+class ShapeFactory {
+
+    + Shape getShape(String shapeType);
+}
+
+ class SimpleClient {
+
+}
+
+SimpleClient ..> ShapeFactory
+ShapeFactory ..> Rectangle
+ShapeFactory ..> Square
+ShapeFactory ..> Circle
+
+
+
+@enduml

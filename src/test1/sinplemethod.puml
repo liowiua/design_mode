@@ -1,0 +1,35 @@
+@startuml
+
+interface Person{
+	 say() : void
+}
+
+class Man implements Person{
+	
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  say() : void
+}
+
+class WoMan implements Person{
+	
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  say() : void
+}
+
+class Robot implements Person{
+	
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  say() : void
+}
+
+class Nvwa {
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  factory(String arg) : Person
+}
+
+ class SimpleFactory{
+	‌‌‌‌‍‍‌‌‌‌‌‌‍‍+  main() : void
+}
+
+SimpleFactory ..> Man
+SimpleFactory ..> WoMan
+SimpleFactory ..> Robot
+Nvwa ..> Person
+
+@enduml

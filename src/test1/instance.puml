@@ -1,0 +1,19 @@
+@startuml
+
+class MultiInstance{
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌-  List<MultiInstance> list
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌-  InstanceStatus status 
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌-  String name 
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‌-  MultiInstance(String name ) : void
+    ‌‌‌‍‍‌‌‌‌‌‌‍‍+   getInstance() : MultiInstance
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+   giveBack() : void
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+   doSomething() : void
+}
+
+ class multiInstanceClient {
+    ‌‌‌‌‍‍‌‌‌‌‌‌‍‍+   main() : void
+}
+
+multiInstanceClient ..> MultiInstance
+
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class HeiMaClient {
+}
+
+interface VideoFile {
+    void decode(String fileName);
+}
+class AviFile implements VideoFile {
+    
+    + void decode(String fileName);
+}
+class RmvbFile implements VideoFile {
+    
+    + void decode(String fileName);
+}
+abstract class OperatingSystem {
+    # VideoFile videoFile;
+    + OperatingSystem(VideoFile videoFile);
+    void play(String fileName);
+}
+class Windows extends OperatingSystem {
+    + Windows(VideoFile videoFile);
+    
+    + void play(String fileName);
+}
+class Mac extends OperatingSystem {
+    + Mac(VideoFile videoFile);
+    
+    + void play(String fileName);
+}
+
+HeiMaClient ..>  OperatingSystem
+VideoFile <--o  OperatingSystem
+@enduml

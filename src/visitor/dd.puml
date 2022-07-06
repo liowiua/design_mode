@@ -1,0 +1,71 @@
+@startuml
+
+
+abstract class ItemHandler
+{
+    +  void handle(Book item);
+    +  void handle(Magazine item);
+    +  void handle(Paper item);
+}
+
+class PageHandler extends ItemHandler
+{
+    + void handle(Book item);
+    + void handle(Magazine item);
+    + void handle(Paper item);
+}
+
+class AuthorHandler extends ItemHandler
+{
+    + void handle(Book item);
+    + void handle(Magazine item);
+    + void handle(Paper item);
+}
+
+interface Item
+{
+    + void accept(ItemHandler handler);
+}
+
+class Magazine implements Item
+{
+    + List<Paper> papers;
+    + String magazineName;
+    + String magazineNo;
+    + void addPaper(Paper paper);
+    + void accept(ItemHandler handler);
+}
+
+class Book implements Item
+{
+    + String bookName;
+    + String author;
+    + int totalPages;
+    + void accept(ItemHandler handler);
+}
+
+class Paper implements Item
+{
+    + String paperTitle;
+    + String author;
+    + int pages;
+    + void accept(ItemHandler handler);
+}
+
+class Libaray
+{
+    - List items = new ArrayList();
+    + void addItem(Item item);
+    + void accept(ItemHandler handler);
+}
+
+ class Client
+{
+
+}
+
+Libaray --o Item
+Client ..> Libaray
+Client ..> ItemHandler
+
+@enduml
